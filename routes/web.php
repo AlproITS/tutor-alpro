@@ -14,9 +14,5 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/books', [BookController::class, 'index']);
 Route::post('/books', [BookController::class, 'store'])->name('books.create');
