@@ -13,6 +13,16 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <form action="/" method="POST">
+            @csrf
+            <label for="title">Title...</label>
+            <input type="text" name="title" id="title">
+            <label for="body">Body...</label>
+            <textarea name="body" id="body" cols="30" rows="10"></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
 
     <!-- 4 grid layout skills on homepage -->
     <!-- Every div is a grid item -->
@@ -86,6 +96,7 @@
                 <a href="">About</a>
             </div>
         </div>
+
     </div>
 
     <div class="header-section">
@@ -141,11 +152,15 @@
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             </p>
         </div>
+
     </div>
-    @foreach ($posts as $p)
+    {{-- @foreach ($posts as $p)
         <h2>Title: {{$p->title}}</h2>
         <h3>User: {{$p->user->name}}</h3>
-    @endforeach
+    @endforeach --}}
+
+
+
 @endsection
 
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,10 @@ use App\Http\Controllers\PagesController;
 //     return view('coba');
 // });
 
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/', [PostController::class, 'index']);
+Route::post('/', [PostController::class, 'store']);
 Route::get('/about', [PagesController::class, 'about']);
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

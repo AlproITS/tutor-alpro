@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -14,7 +15,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        //non fluent
+        //DB::select(['table' => 'posts', 'where' => ['id' => 1]])
+
+        //fluent
+        //DB::table('posts')->where('id', 1)->get()
+        $id = 7;
+
+        $post = DB::table('posts')
+            ->where('id', $id)
+            ->count();
+
+        return view('index');
     }
 
     /**
@@ -24,7 +36,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +46,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'string|max:140',
+            'body' => 'string'
+        ]);
+        Post::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'user_id' => 10
+        ]);
+
+        return redirect()->back();
     }
 
     /**
